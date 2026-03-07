@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIO.YOU - Coming Soon</title>
+    <link rel="icon" type="image/png" href="./favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: #8BD86D;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 80vw;
+            height: 80vw;
+            max-width: 1200px;
+            max-height: 1200px;
+            background: #5FCA35;
+            filter: blur(92px);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            animation: revealCircle 1.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            width: 280px;
+            max-width: 80%;
+            height: auto;
+            margin: 0 auto 60px;
+            display: block;
+            animation: revealLogo 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            font-size: clamp(2.5rem, 6vw, 6rem);
+            color: #FFFFFF;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 48px;
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            animation: revealHeading 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
+        }
+
+
+
+        .email-form {
+            display: flex;
+            gap: 12px;
+            max-width: 480px;
+            margin: 0 auto;
+            animation: revealForm 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s backwards;
+        }
+
+        input[type="email"] {
+            flex: 1;
+            height: 56px;
+            padding: 0 20px;
+            border: 2px solid #c5bfb8;
+            border-radius: 12px;
+            background: #ffffff;
+            font-size: 16px;
+            font-family: 'Open Sans', sans-serif;
+            color: #1a3d2b;
+            transition: all 0.3s ease;
+        }
+
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #6FCA35;
+            box-shadow: 0 0 0 4px rgba(111, 202, 53, 0.1);
+        }
+
+        input[type="email"]::placeholder {
+            color: #9a9690;
+        }
+
+        button {
+            height: 56px;
+            padding: 0 32px;
+            background: #163D3D;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Open Sans', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        button:hover {
+            background: #0F2A2A;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(22, 61, 61, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            margin-top: 24px;
+            padding: 20px;
+            background: rgba(111, 202, 53, 0.1);
+            border: 1px solid rgba(111, 202, 53, 0.3);
+            border-radius: 12px;
+            color: #1a3d2b;
+            font-size: 15px;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .error-message {
+            display: none;
+            margin-top: 12px;
+            color: #d64545;
+            font-size: 14px;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes revealLogo {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes revealHeading {
+            0% {
+                opacity: 0;
+                transform: translateY(40px);
+                filter: blur(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes revealForm {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes revealCircle {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.15);
+                opacity: 0.75;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                margin-bottom: 40px;
+            }
+
+            h1 {
+                margin-bottom: 36px;
+            }
+
+            .email-form {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg width="739" height="166" viewBox="0 0 739 166" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo">
+            <path d="M680.259 136.823C640.364 136.823 621.848 114.664 621.848 81.5771V21.5764H645.119V80.3053C645.119 101.683 654.298 116.398 680.259 116.398C706.219 116.398 715.253 101.67 715.253 80.3053V21.5764H738.683V81.5771C738.683 114.664 719.994 136.823 680.272 136.823H680.259Z" fill="#163D3D"/>
+            <path d="M401.792 68.1066L442.482 21.5632H470.177L413.183 86.9412V135.22H389.911V86.9412L332.758 21.5632H361.103L401.792 68.1066Z" fill="#163D3D"/>
+            <path d="M243.354 19.828C282.136 19.828 310.48 44.6759 310.48 78.3981C310.48 112.12 282.149 136.968 243.354 136.968C204.559 136.968 176.227 112.107 176.227 78.3981C176.227 44.6891 204.4 19.828 243.354 19.828ZM243.354 40.2519C217.87 40.2519 200.135 55.4442 200.135 78.4114C200.135 101.379 217.87 116.571 243.354 116.571C268.837 116.571 286.573 101.379 286.573 78.4114C286.573 55.4442 268.837 40.2519 243.354 40.2519Z" fill="#163D3D"/>
+            <path d="M158.015 21.5632V135.233H134.743V21.5632H158.015Z" fill="#163D3D"/>
+            <path d="M0 135.233V21.5632H74.5703C99.1136 21.5632 113.034 32.3313 113.034 51.8017C113.034 65.4177 104.173 72.8617 96.4116 76.1863C107.816 79.9876 116.518 89.6434 116.518 103.418C116.518 123.366 101.326 135.233 77.2591 135.233H0ZM22.3181 67.7887H72.1862C83.8949 67.7887 91.0208 63.3517 91.0208 54.3317C91.0208 45.3118 83.8949 40.8744 72.1862 40.8744H22.3181V67.7887ZM22.3181 115.763H75.6697C87.2327 115.763 94.0275 109.908 94.0275 101.193C94.0275 92.4777 87.2195 86.6233 75.6697 86.6233H22.3181V115.763Z" fill="#163D3D"/>
+            <path d="M332.772 136.981C340.394 136.981 346.573 130.873 346.573 123.339C346.573 115.804 340.394 109.697 332.772 109.697C325.149 109.697 318.97 115.804 318.97 123.339C318.97 130.873 325.149 136.981 332.772 136.981Z" fill="#163D3D"/>
+            <path d="M541.887 0C577.556 0 603.622 22.8611 603.622 53.868C603.622 84.875 577.556 107.736 541.887 107.736C506.217 107.736 480.151 84.875 480.151 53.868C480.151 22.8611 506.072 0 541.887 0ZM541.887 20.424C519.582 20.424 504.058 33.7486 504.058 53.868C504.058 73.9874 519.582 87.3121 541.887 87.3121C564.191 87.3121 579.715 73.9874 579.715 53.868C579.715 33.7486 564.191 20.424 541.887 20.424Z" fill="#163D3D"/>
+            <path d="M541.887 138.439C561.715 138.439 576.165 148.968 579.145 165.432H603.225C599.874 137.75 575.039 118.014 541.887 118.014C508.734 118.014 483.886 137.763 480.548 165.432H504.628C507.595 148.968 522.059 138.439 541.887 138.439Z" fill="#163D3D"/>
+        </svg>
+        
+        <h1>The Future of Nutrient<br>Delivery is Coming</h1>
+
+        <form class="email-form" id="emailForm">
+            <input 
+                type="email" 
+                id="email" 
+                placeholder="Enter your email" 
+                required
+            >
+            <button type="submit" id="submitBtn">Stay Tuned</button>
+        </form>
+
+        <div class="error-message" id="errorMessage">
+            Please enter a valid email address
+        </div>
+
+        <div class="success-message" id="successMessage">
+            🎉 Thank you! We'll notify you when we launch.
+        </div>
+    </div>
+
+    <script>
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxr97NX-Q64Q4QqNTdjx3zVa918qwJD5wVjmfYbqocar6eK6eXWpJaYDTtNVDVxu19wgA/exec';
+
+        const form = document.getElementById('emailForm');
+        const emailInput = document.getElementById('email');
+        const submitBtn = document.getElementById('submitBtn');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = emailInput.value.trim();
+            
+            if (!email || !isValidEmail(email)) {
+                errorMessage.classList.add('show');
+                return;
+            }
+
+            errorMessage.classList.remove('show');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            try {
+                await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        timestamp: new Date().toISOString(),
+                        email: email,
+                        source: 'simple-page'
+                    })
+                });
+
+                emailInput.value = '';
+                successMessage.classList.add('show');
+                
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+
+            } catch (error) {
+                errorMessage.textContent = 'Something went wrong. Please try again.';
+                errorMessage.classList.add('show');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Stay Tuned';
+            }
+        });
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        emailInput.addEventListener('input', () => {
+            errorMessage.classList.remove('show');
+        });
+    </script>
+</body>
+</html>
